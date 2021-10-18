@@ -1,0 +1,26 @@
+:root {
+
+    --main-bg-color: #02020A;
+    --my-red: #9E0D0D; 
+    --table-bg-color: #A7ADC6;
+    --table-border-color: #29339B;
+
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-information {
+    font-weight: bolder;
+}
