@@ -5,6 +5,7 @@ const accountsController = require('../controllers/accountsController')
 router.get('/', accountsController.getMainPage)
 
 router.get('/accounts', accountsController.getAccountsPage)
+router.get('/accounts/create-account-page', accountsController.getCreateAccountPage)
 // router.get('/reddit')
 // router.get('/facebook')
 // router.get('/figma')

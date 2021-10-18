@@ -15,3 +15,13 @@ exports.getAccountsPage = (req, res, next) => {
     })
 
 }
+
+exports.getCreateAccountPage = (req, res, next) => {
+    const service = req.query.service
+    res.render('create-account', {
+
+        service: service
+        
+    })
+
+}
