@@ -1,0 +1,61 @@
+:root {
+
+    --main-bg-color: #02020A;
+    --my-red: #9E0D0D; 
+    --table-bg-color: #A7ADC6;
+    --table-border-color: #29339B;
+
+}
+
+body {
+    background-color: var(--main-bg-color);
+    color: white;
+}
+
+.account{
+    background-color: var(--table-bg-color);
+    /* margin-bottom: 10px; */
+    /* padding: 5px; */
+}
+
+.image {
+    width: 60px;
+}
+
+.control-icon {
+    width: 30px;
+}
+
+main {
+    /* max-width: 80vh; */
+    gap: 50px;
+    /* background-color: red; */
+    /* overflow: scroll; */
+    overflow-y: scroll;
+    max-height: 70vh;
+    border: 1px solid white;
+}
+
+@media screen and (max-width: 530px) {
+    .control-icon {
+        width: 20px;
+    }
+/* 
+    main {
+        flex-direction: column;
+    } */
+}
+
+@media screen and (max-width: 420px) {
+    
+    main{
+        /* background-color: green; */
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .new-account-icon{
+        width: 30px;
+    }
+
+}
