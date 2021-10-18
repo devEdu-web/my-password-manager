@@ -36,8 +36,10 @@ const Account = sequelize.define('accounts', {
     cellNumber: {
         type: DataTypes.STRING,
         allowNull: true
-    }
+    },
 
+}, {
+    timestamps: false,
 })
 
 module.exports = Account

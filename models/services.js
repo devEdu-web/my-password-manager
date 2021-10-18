@@ -10,12 +10,14 @@ const Service = sequelize.define('service', {
         allowNull: false
     },
 
-    serviceName: {
+    name: {
         type: DataTypes.STRING,
         primaryKey: true,
         allowNull: false
     }
 
+}, {
+    timestamps: false
 })
 
 module.exports = Service

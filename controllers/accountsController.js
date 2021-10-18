@@ -1,7 +1,8 @@
+const Accounts = require('../models/accounts')
+const Services = require('../models/services')
+
 exports.getMainPage = (req, res, next) => {
-
     res.render('index')
-
 }
 
 exports.getAccountsPage = (req, res, next) => {
@@ -45,10 +46,13 @@ exports.getAccountInfoPage = (req, res, next) => {
     const id = req.query.id
 
     res.render('account-info', {
-
         service: service,
         id: id
-
     })
 
+}
+
+
+exports.postAccount = (req, res, next) => {
+    
 }
