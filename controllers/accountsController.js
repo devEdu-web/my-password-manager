@@ -25,3 +25,16 @@ exports.getCreateAccountPage = (req, res, next) => {
     })
 
 }
+
+exports.getEditAccountPage = (req, res, next) => {
+    const service = req.query.service
+    const id = req.query.id
+
+    res.render('edit-account', {
+
+        service: service,
+        id: id
+
+    })
+
+}
