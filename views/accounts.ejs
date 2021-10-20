@@ -43,7 +43,7 @@
                     <span><a href="/account-info?service=<%=service%>&id=<%= account.id %>"><%= account.user %> </a></span>
                     <div class="d-flex justify-content-center align-items-center controls">
                         <a href="/accounts/edit-account?service=<%=service%>&id=<%=account.id%>"><img class="control-icon" src="/images/edit40x40.png" alt=""></a>
-                        <img class="control-icon" src="/images/delete-red40x40.png" alt="">
+                        <a href="/delete-account?service=<%=service%>&id=<%=account.id%>"><img class="control-icon" src="/images/delete-red40x40.png" alt=""></a>
                     </div>
 
 

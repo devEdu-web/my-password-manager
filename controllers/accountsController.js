@@ -109,3 +109,19 @@ exports.postEditAccount = (req, res, next) => {
         console.log(err)
     })
 }
+
+exports.deleteAccount = (req, res, next) => {
+
+    const service = req.query.service
+    const id = req.query.id
+
+    Accounts.destroy({where: {
+        id: id,
+        serviceName: service
+    }})
+    .then(result => {
+        res.redirect(`/accounts?service=${service}`)
+    })
+    .catch(err => console.log(err))
+
+}

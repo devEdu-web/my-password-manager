@@ -11,6 +11,7 @@ router.get('/account-info', accountsController.getAccountInfoPage)
 
 router.post('/new-account', accountsController.postAccount)
 router.post('/edit-account', accountsController.postEditAccount)
+router.get('/delete-account', accountsController.deleteAccount)
 // router.get('/reddit')
 // router.get('/facebook')
 // router.get('/figma')
