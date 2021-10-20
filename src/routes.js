@@ -10,6 +10,7 @@ router.get('/accounts/edit-account', accountsController.getEditAccountPage)
 router.get('/account-info', accountsController.getAccountInfoPage)
 
 router.post('/new-account', accountsController.postAccount)
+router.post('/edit-account', accountsController.postEditAccount)
 // router.get('/reddit')
 // router.get('/facebook')
 // router.get('/figma')

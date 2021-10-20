@@ -66,13 +66,10 @@ exports.getAccountInfoPage = (req, res, next) => {
         service: service,
         id: id
     })
-
 }
-
 
 exports.postAccount = (req, res, next) => {
     const accountInfo = req.body
-
     Accounts.create({
         user: accountInfo.nickname,
         email: accountInfo.email,
@@ -82,11 +79,33 @@ exports.postAccount = (req, res, next) => {
         serviceName: accountInfo.service
     })
     .then(result => {
-
         res.redirect(`/accounts?service=${accountInfo.service}`)
-
     })
     .catch(err => console.log(err))
+}
 
-    console.log(accountInfo)
+exports.postEditAccount = (req, res, next) => {
+    const updatedData = req.body
+    const accountId = Number(req.body.id)
+    console.log(updatedData.service)
+    Accounts.update({
+
+        user: updatedData.nickname,
+        email: updatedData.email,
+        recoveryEmail: updatedData.recoveryEmail,
+        password: updatedData.password,
+        cellNumber: updatedData.number
+
+    }, {
+        where: {
+            id: accountId
+           
+        }
+    })
+    .then(result => {
+        res.redirect(`/accounts?service=${updatedData.service}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
 }

@@ -21,12 +21,16 @@
 
             <input value="<%=account.email%>" type="email" name="email" id="" placeholder="E-mail">
 
-            <input value="<%=account.recoveryEmail%>" type="email" name="recovery-email" placeholder="Recovery E-mail">
+            <input value="<%=account.recoveryEmail%>" type="email" name="recoveryEmail" placeholder="Recovery E-mail">
 
             <input value="<%=account.password%>" type="password" name="password" id="" placeholder="Password">
 
             <input value="<%=account.cellNumber%>" type="tel" name="number" id="" placeholder="Cellphone Number">
             
+            <input name="id" type="hidden" value="<%=account.id%>">
+
+            <input type="hidden" name="service" value="<%=service%>">
+
             <button type="submit">Add</button>
 
             <span>You're editing an account into <span class="current-service-warning"><%= service %></span></span>
