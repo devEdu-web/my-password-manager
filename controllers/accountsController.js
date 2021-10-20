@@ -12,7 +12,8 @@ exports.getAccountsPage = (req, res, next) => {
     }})
     .then(accounts => {
         const allAcounts = accounts
-        console.log(allAcounts)
+        // console.log(allAcounts)
+        console.log(service)
         res.render('accounts', {
             
             service: service,
@@ -38,13 +39,21 @@ exports.getCreateAccountPage = (req, res, next) => {
 exports.getEditAccountPage = (req, res, next) => {
     const service = req.query.service
     const id = req.query.id
-
-    res.render('edit-account', {
-
-        service: service,
-        id: id
-
+    Accounts.findAll({
+        where: {
+            id: id,
+            serviceName: service
+        }
     })
+    .then(account => {
+        const fetchedAccount = account[0]
+        // console.log(fetchedAccount)
+        res.render('edit-account', {
+            service: service,
+            account: fetchedAccount
+        })
+    })
+    .catch(err => console.log(err))
 
 }
 

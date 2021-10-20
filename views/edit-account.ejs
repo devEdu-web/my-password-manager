@@ -14,18 +14,18 @@
 
         <h1>Edit an account</h1>
 
-        <form action="/new-account" method="post">
+        <form action="/edit-account" method="post">
         
             
-            <input type="text" name="nickname" id="" placeholder="Nickname / User name">
+            <input value="<%=account.user%>" type="text" name="nickname" id="" placeholder="Nickname / User name">
 
-            <input type="email" name="email" id="" placeholder="E-mail">
+            <input value="<%=account.email%>" type="email" name="email" id="" placeholder="E-mail">
 
-            <input type="email" name="recovery-email" placeholder="Recovery E-mail">
+            <input value="<%=account.recoveryEmail%>" type="email" name="recovery-email" placeholder="Recovery E-mail">
 
-            <input type="password" name="password" id="" placeholder="Password">
+            <input value="<%=account.password%>" type="password" name="password" id="" placeholder="Password">
 
-            <input type="tel" name="number" id="" placeholder="Cellphone Number">
+            <input value="<%=account.cellNumber%>" type="tel" name="number" id="" placeholder="Cellphone Number">
             
             <button type="submit">Add</button>
 
