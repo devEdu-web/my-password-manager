@@ -21,12 +21,14 @@
 
             <input type="email" name="email" id="" placeholder="E-mail">
 
-            <input type="email" name="recovery-email" placeholder="Recovery E-mail">
+            <input type="email" name="recoveryEmail" placeholder="Recovery E-mail">
 
             <input type="password" name="password" id="" placeholder="Password">
 
             <input type="tel" name="number" id="" placeholder="Cellphone Number">
             
+            <input type="hidden" name="service" value="<%=service%>">
+
             <button type="submit">Add</button>
 
             <span>You're adding an account into <span class="current-service-warning"><%= service %></span></span>

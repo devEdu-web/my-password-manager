@@ -25,43 +25,31 @@
     <main class="container d-flex flex-column flex-wrap justify-content-start align-items-center p-3">
 
         <div class="row justify-content-center gap-3 text-dark">
-            <div class="account col-10 d-flex justify-content-between align-items-center gap-5">
 
 
-
+            <!-- <div class="account col-10 d-flex justify-content-between align-items-center gap-5">
                 <span><a href="/account-info?service=<%=service%>&id=666">Accounts</a></span>
-
-
-
                 <div class="d-flex justify-content-center align-items-center controls">
-
-
-
                     <a href="/accounts/edit-account?service=<%=service%>&id=666"><img class="control-icon" src="/images/edit40x40.png" alt=""></a>
-
-
-
                     <img class="control-icon" src="/images/delete-red40x40.png" alt="">
                 </div>
-            </div>
+            </div> -->
 
 
-            <div class="account col-10 d-flex justify-content-between align-items-center gap-5">
-                <span>Accounts</span>
-                <div class="d-flex justify-content-center align-items-center controls">
-                    <img class="control-icon" src="/images/edit40x40.png" alt="">
-                    <img class="control-icon" src="/images/delete-red40x40.png" alt="">
+
+            <% accounts.forEach(account => { %> 
+                
+                <div class="account col-10 d-flex justify-content-between align-items-center gap-5">
+                    <span><a href="/account-info?service=<%=service%>&id=<%= account.id %>"><%= account.user %> </a></span>
+                    <div class="d-flex justify-content-center align-items-center controls">
+                        <a href="/accounts/edit-account?service=<%=service%>&id=<%=account.id%>"><img class="control-icon" src="/images/edit40x40.png" alt=""></a>
+                        <img class="control-icon" src="/images/delete-red40x40.png" alt="">
+                    </div>
+
+
                 </div>
-            </div>
 
-            <div class="account col-10 d-flex justify-content-between align-items-center gap-5">
-                <span>Accounts</span>
-                <div class="d-flex justify-content-center align-items-center controls">
-                    <img class="control-icon" src="/images/edit40x40.png" alt="">
-                    <img class="control-icon" src="/images/delete-red40x40.png" alt="">
-                </div>
-            </div>
-
+            <% }) %> 
         </div>        
 
     </main>

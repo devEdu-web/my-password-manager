@@ -8,6 +8,8 @@ router.get('/accounts', accountsController.getAccountsPage)
 router.get('/accounts/create-account-page', accountsController.getCreateAccountPage)
 router.get('/accounts/edit-account', accountsController.getEditAccountPage)
 router.get('/account-info', accountsController.getAccountInfoPage)
+
+router.post('/new-account', accountsController.postAccount)
 // router.get('/reddit')
 // router.get('/facebook')
 // router.get('/figma')

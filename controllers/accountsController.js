@@ -7,13 +7,21 @@ exports.getMainPage = (req, res, next) => {
 
 exports.getAccountsPage = (req, res, next) => {
     const service = req.query.service
-
-    res.render('accounts', {
-
-        service: service
-
+    Accounts.findAll({where: {
+        serviceName: service
+    }})
+    .then(accounts => {
+        const allAcounts = accounts
+        console.log(allAcounts)
+        res.render('accounts', {
+            
+            service: service,
+            accounts: allAcounts
+    
+        })
 
     })
+    .catch(err => console.log(err))
 
 }
 
@@ -54,5 +62,22 @@ exports.getAccountInfoPage = (req, res, next) => {
 
 
 exports.postAccount = (req, res, next) => {
-    
+    const accountInfo = req.body
+
+    Accounts.create({
+        user: accountInfo.nickname,
+        email: accountInfo.email,
+        recoveryEmail: accountInfo.recoveryEmail,
+        password: accountInfo.password,
+        cellNumber: accountInfo.number,
+        serviceName: accountInfo.service
+    })
+    .then(result => {
+
+        res.redirect(`/accounts?service=${accountInfo.service}`)
+
+    })
+    .catch(err => console.log(err))
+
+    console.log(accountInfo)
 }
