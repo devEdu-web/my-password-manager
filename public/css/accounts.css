@@ -2,7 +2,7 @@
 
     --main-bg-color: #02020A;
     --my-red: #9E0D0D; 
-    --table-bg-color: #A7ADC6;
+    --table-bg-color: #29339bb2;
     --table-border-color: #29339B;
 
 }
@@ -12,11 +12,24 @@ body {
     color: white;
 }
 
+.account-container {
+
+    /* background-color: red; */
+    width: 100%;
+}
+
 .account{
     background-color: var(--table-bg-color);
-    padding-right: 50px;
+    width: 40%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* box-shadow: 1px 2px 4px white; */
     /* margin-bottom: 10px; */
     /* padding: 5px; */
+}
+
+.account a {
+    color: white;
 }
 
 .image {
@@ -34,7 +47,7 @@ main {
     /* overflow: scroll; */
     overflow-y: scroll;
     max-height: 70vh;
-    border: 1px solid white;
+    /* border: 1px solid white; */
 }
 
 @media screen and (max-width: 530px) {
@@ -45,6 +58,9 @@ main {
     main {
         flex-direction: column;
     } */
+    .account {
+        width: 70%;
+    }
 }
 
 @media screen and (max-width: 420px) {
@@ -57,6 +73,10 @@ main {
 
     .new-account-icon{
         width: 30px;
+    }
+
+    .account {
+        width: 80%;
     }
 
 }
