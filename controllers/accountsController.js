@@ -58,15 +58,24 @@ exports.getEditAccountPage = (req, res, next) => {
 }
 
 exports.getAccountInfoPage = (req, res, next) => {
-
     const service = req.query.service
-    const id = req.query.id
+    const id = Number(req.query.id)
 
-    res.render('account-info', {
-        service: service,
-        id: id
+    Accounts.findByPk(id)
+    .then(account => {
+        const fetchedAccount = account
+        console.log(fetchedAccount)
+        res.render('account-info', {
+            account: fetchedAccount
+        })
+        
     })
+    .catch(err => console.log(err))
+
+
+    
 }
+
 
 exports.postAccount = (req, res, next) => {
     const accountInfo = req.body
