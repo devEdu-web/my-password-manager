@@ -1,10 +1,8 @@
 :root {
-
     --main-bg-color: #02020A;
     --my-red: #9E0D0D; 
     --table-bg-color: #29339bb2;
     --table-border-color: #29339B;
-
 }
 
 body {
@@ -13,9 +11,10 @@ body {
 }
 
 .account-container {
-
-    /* background-color: red; */
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .account{
@@ -23,9 +22,6 @@ body {
     width: 40%;
     padding: 5px 10px;
     border-radius: 5px;
-    /* box-shadow: 1px 2px 4px white; */
-    /* margin-bottom: 10px; */
-    /* padding: 5px; */
 }
 
 .account a {
@@ -41,23 +37,17 @@ body {
 }
 
 main {
-    /* max-width: 80vh; */
     gap: 50px;
-    /* background-color: red; */
-    /* overflow: scroll; */
     overflow-y: scroll;
     max-height: 70vh;
-    /* border: 1px solid white; */
 }
+
+
 
 @media screen and (max-width: 530px) {
     .control-icon {
         width: 20px;
     }
-/* 
-    main {
-        flex-direction: column;
-    } */
     .account {
         width: 70%;
     }
@@ -66,7 +56,6 @@ main {
 @media screen and (max-width: 420px) {
     
     main{
-        /* background-color: green; */
         flex-direction: column;
         gap: 20px;
     }

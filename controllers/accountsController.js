@@ -1,5 +1,6 @@
 const Accounts = require('../models/accounts')
 const Services = require('../models/services')
+const {check, validationResult} = require('express-validator')
 
 exports.getMainPage = (req, res, next) => {
     res.render('index')
@@ -15,10 +16,8 @@ exports.getAccountsPage = (req, res, next) => {
         // console.log(allAcounts)
         console.log(service)
         res.render('accounts', {
-            
             service: service,
             accounts: allAcounts
-    
         })
 
     })
@@ -29,7 +28,7 @@ exports.getAccountsPage = (req, res, next) => {
 exports.getCreateAccountPage = (req, res, next) => {
     const service = req.query.service
     res.render('create-account', {
-
+        error: false,
         service: service
         
     })
@@ -71,26 +70,34 @@ exports.getAccountInfoPage = (req, res, next) => {
         
     })
     .catch(err => console.log(err))
-
-
-    
 }
 
 
 exports.postAccount = (req, res, next) => {
+    const errors = validationResult(req)
     const accountInfo = req.body
-    Accounts.create({
-        user: accountInfo.nickname,
-        email: accountInfo.email,
-        recoveryEmail: accountInfo.recoveryEmail,
-        password: accountInfo.password,
-        cellNumber: accountInfo.number,
-        serviceName: accountInfo.service
-    })
-    .then(result => {
-        res.redirect(`/accounts?service=${accountInfo.service}`)
-    })
-    .catch(err => console.log(err))
+
+    if(!errors.isEmpty()) {
+        res.send(errors)
+    } 
+
+    else {
+        Accounts.create({
+            user: accountInfo.nickname,
+            email: accountInfo.email,
+            recoveryEmail: accountInfo.recoveryEmail,
+            password: accountInfo.password,
+            cellNumber: accountInfo.number,
+            serviceName: accountInfo.service
+        })
+        .then(result => {
+            res.redirect(201, `/accounts?service=${accountInfo.service}`)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
 }
 
 exports.postEditAccount = (req, res, next) => {
@@ -98,23 +105,23 @@ exports.postEditAccount = (req, res, next) => {
     const accountId = Number(req.body.id)
     console.log(updatedData.service)
     Accounts.update({
-
         user: updatedData.nickname,
         email: updatedData.email,
         recoveryEmail: updatedData.recoveryEmail,
         password: updatedData.password,
         cellNumber: updatedData.number
-
     }, {
         where: {
             id: accountId
-           
+        
         }
     })
     .then(result => {
         res.redirect(`/accounts?service=${updatedData.service}`)
     })
     .catch(err => {
+
+
         console.log(err)
     })
 }
