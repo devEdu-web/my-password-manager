@@ -103,27 +103,38 @@ exports.postAccount = (req, res, next) => {
 exports.postEditAccount = (req, res, next) => {
     const updatedData = req.body
     const accountId = Number(req.body.id)
-    console.log(updatedData.service)
-    Accounts.update({
-        user: updatedData.nickname,
-        email: updatedData.email,
-        recoveryEmail: updatedData.recoveryEmail,
-        password: updatedData.password,
-        cellNumber: updatedData.number
-    }, {
-        where: {
-            id: accountId
-        
-        }
-    })
-    .then(result => {
-        res.redirect(`/accounts?service=${updatedData.service}`)
-    })
-    .catch(err => {
+    const errors = validationResult(req)
+
+    if(!errors.isEmpty()) {
+
+        res.send(errors)
+
+    }
+    else {
+        Accounts.update({
+            user: updatedData.nickname,
+            email: updatedData.email,
+            recoveryEmail: updatedData.recoveryEmail,
+            password: updatedData.password,
+            cellNumber: updatedData.number
+        }, {
+            where: {
+                id: accountId
+            
+            }
+        })
+        .then(result => {
+            res.redirect(`/accounts?service=${updatedData.service}`)
+        })
+        .catch(err => {
+    
+    
+            console.log(err)
+        })
 
 
-        console.log(err)
-    })
+    }
+
 }
 
 exports.deleteAccount = (req, res, next) => {
