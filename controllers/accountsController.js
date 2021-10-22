@@ -28,7 +28,7 @@ exports.getAccountsPage = (req, res, next) => {
 exports.getCreateAccountPage = (req, res, next) => {
     const service = req.query.service
     res.render('create-account', {
-        error: false,
+        hasError: false,
         service: service
         
     })
@@ -78,7 +78,12 @@ exports.postAccount = (req, res, next) => {
     const accountInfo = req.body
 
     if(!errors.isEmpty()) {
-        res.send(errors)
+        res.status(400)
+        res.render('create-account', {
+            hasError: true,
+            err: errors,
+            service: accountInfo.service
+        })
     } 
 
     else {
