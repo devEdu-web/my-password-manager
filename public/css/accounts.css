@@ -1,71 +1,67 @@
 :root {
-    --main-bg-color: #02020A;
-    --my-red: #9E0D0D; 
-    --table-bg-color: #29339bb2;
-    --table-border-color: #29339B;
+  --main-bg-color: #02020a;
+  --my-red: #9e0d0d;
+  --table-bg-color: #29339bb2;
+  --table-border-color: #29339b;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: white;
+  background-color: var(--main-bg-color);
+  color: white;
 }
 
 .account-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.account{
-    background-color: var(--table-bg-color);
-    width: 40%;
-    padding: 5px 10px;
-    border-radius: 5px;
+.account {
+  background-color: var(--table-bg-color);
+  width: 40%;
+  padding: 5px 10px;
+  border-radius: 5px;
 }
 
 .account a {
-    color: white;
+  color: white;
 }
 
 .image {
-    width: 60px;
+  width: 60px;
 }
 
 .control-icon {
-    width: 30px;
+  width: 30px;
 }
 
 main {
-    gap: 50px;
-    overflow-y: scroll;
-    max-height: 70vh;
+  gap: 50px;
+  overflow-y: scroll;
+  max-height: 70vh;
 }
 
-
-
 @media screen and (max-width: 530px) {
-    .control-icon {
-        width: 20px;
-    }
-    .account {
-        width: 70%;
-    }
+  .control-icon {
+    width: 20px;
+  }
+  .account {
+    width: 70%;
+  }
 }
 
 @media screen and (max-width: 420px) {
-    
-    main{
-        flex-direction: column;
-        gap: 20px;
-    }
+  main {
+    flex-direction: column;
+    gap: 20px;
+  }
 
-    .new-account-icon{
-        width: 30px;
-    }
+  .new-account-icon {
+    width: 30px;
+  }
 
-    .account {
-        width: 80%;
-    }
-
+  .account {
+    width: 80%;
+  }
 }

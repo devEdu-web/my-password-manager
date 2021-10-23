@@ -1,108 +1,96 @@
 :root {
-
-    --main-bg-color: #02020A;
-    --my-red: #9E0D0D; 
-    --table-bg-color: #A7ADC6;
-    --table-border-color: #29339B;
-
+  --main-bg-color: #02020a;
+  --my-red: #9e0d0d;
+  --table-bg-color: #a7adc6;
+  --table-border-color: #29339b;
 }
 
 body {
-    background-color: var(--main-bg-color);
-    color: white;
+  background-color: var(--main-bg-color);
+  color: white;
 }
 
 h1 {
-    font-weight: bolder;
+  font-weight: bolder;
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    padding: 16px;
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
 }
 
 form {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    width: 35vw;
-    /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  width: 35vw;
+  /* background-color: red; */
 }
 
 input {
-    color: white;
-    background-color: var(--main-bg-color);
-    outline: none;
-    border: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.685);
-    padding: 5px 10px;
-    font-size: 1.4rem;
-    width: 100%;
+  color: white;
+  background-color: var(--main-bg-color);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.685);
+  padding: 5px 10px;
+  font-size: 1.4rem;
+  width: 100%;
 }
 
 button {
-    background-color: var(--table-border-color);
-    border: none;
-    border-radius: 50px;
-    padding: 5px 20px;
-    font-size: 1.2rem;
-    width: 40%;
-    color: white;
-    font-weight: bolder;
+  background-color: var(--table-border-color);
+  border: none;
+  border-radius: 50px;
+  padding: 5px 20px;
+  font-size: 1.2rem;
+  width: 40%;
+  color: white;
+  font-weight: bolder;
 }
 
-
 .current-service-warning {
-    color: var(--my-red);
-    font-weight: bolder;
+  color: var(--my-red);
+  font-weight: bolder;
 }
 
 .display-none {
-
-    display: none;
-    position: absolute;
-    right: 10px;
+  display: none;
+  position: absolute;
+  right: 10px;
 }
 
 .display-block {
-
-    display: block;
-    position: absolute;
-    right: 10px;
-
+  display: block;
+  position: absolute;
+  right: 10px;
 }
 
 @media screen and (max-width: 750px) {
-
-    form {
-
-        width: 50vw;
-    }
-
+  form {
+    width: 50vw;
+  }
 }
 
 @media screen and (max-width: 580px) {
+  form {
+    width: 80vw;
+  }
 
-    form {
-        width: 80vw;
-    }
+  input {
+    font-size: 1.2rem;
+  }
 
-    input {
-        font-size: 1.2rem;
-    }
+  button {
+    width: 60%;
+  }
 
-    button {
-        width: 60%;
-    }
-
-    span {
-        font-size: 0.8rem;
-    }
-
+  span {
+    font-size: 0.8rem;
+  }
 }
