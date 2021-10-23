@@ -89,9 +89,6 @@ exports.dataValidation = (req, res, next) => {
         next()
     }
 
-    // voce tava tendando resolver o problema caso ocorra um erro, mostrar o form, mas o problema é que são mostradas duas pagins form, uma na que o usuario está, e a outra caso ele volte
-
-
 }
 
 exports.postAccount = (req, res, next) => {
