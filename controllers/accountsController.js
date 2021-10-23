@@ -72,11 +72,10 @@ exports.getAccountInfoPage = (req, res, next) => {
     .catch(err => console.log(err))
 }
 
-
-exports.postAccount = (req, res, next) => {
+exports.dataValidation = (req, res, next) => {
     const errors = validationResult(req)
     const accountInfo = req.body
-
+    
     if(!errors.isEmpty()) {
         res.status(400)
         res.render('create-account', {
@@ -85,23 +84,35 @@ exports.postAccount = (req, res, next) => {
             service: accountInfo.service
         })
     } 
-
+    
     else {
-        Accounts.create({
-            user: accountInfo.nickname,
-            email: accountInfo.email,
-            recoveryEmail: accountInfo.recoveryEmail,
-            password: accountInfo.password,
-            cellNumber: accountInfo.number,
-            serviceName: accountInfo.service
-        })
-        .then(result => {
-            res.redirect(201, `/accounts?service=${accountInfo.service}`)
-        })
-        .catch(err => {
-            console.log(err)
-        })
+        next()
     }
+
+    // voce tava tendando resolver o problema caso ocorra um erro, mostrar o form, mas o problema é que são mostradas duas pagins form, uma na que o usuario está, e a outra caso ele volte
+
+
+}
+
+exports.postAccount = (req, res, next) => {
+    // const errors = validationResult(req)
+    const accountInfo = req.body
+    
+    Accounts.create({
+        user: accountInfo.nickname,
+        email: accountInfo.email,
+        recoveryEmail: accountInfo.recoveryEmail,
+        password: accountInfo.password,
+        cellNumber: accountInfo.number,
+        serviceName: accountInfo.service
+    })
+    .then(result => {
+        res.redirect(201, `/accounts?service=${accountInfo.service}`)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+    
 
 }
 
