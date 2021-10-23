@@ -48,6 +48,7 @@ exports.getEditAccountPage = (req, res, next) => {
         const fetchedAccount = account[0]
         // console.log(fetchedAccount)
         res.render('edit-account', {
+            hasError: false,
             service: service,
             account: fetchedAccount
         })
@@ -75,14 +76,16 @@ exports.getAccountInfoPage = (req, res, next) => {
 exports.dataValidation = (req, res, next) => {
     const errors = validationResult(req)
     const accountInfo = req.body
-    
+    const currentPage = req.url
+
+    console.log(currentPage)
     if(!errors.isEmpty()) {
-        res.status(400)
-        res.render('create-account', {
-            hasError: true,
-            err: errors,
-            service: accountInfo.service
-        })
+        res.redirect(301, 'back')
+        // res.render('create-account', {
+        //     hasError: true,
+        //     err: errors,
+        //     service: accountInfo.service
+        // })
     } 
     
     else {
@@ -104,7 +107,8 @@ exports.postAccount = (req, res, next) => {
         serviceName: accountInfo.service
     })
     .then(result => {
-        res.redirect(201, `/accounts?service=${accountInfo.service}`)
+        res.status(201)
+        res.redirect(`/accounts?service=${accountInfo.service}`)
     })
     .catch(err => {
         console.log(err)
@@ -116,37 +120,30 @@ exports.postAccount = (req, res, next) => {
 exports.postEditAccount = (req, res, next) => {
     const updatedData = req.body
     const accountId = Number(req.body.id)
-    const errors = validationResult(req)
 
-    if(!errors.isEmpty()) {
+    Accounts.update({
+        user: updatedData.nickname,
+        email: updatedData.email,
+        recoveryEmail: updatedData.recoveryEmail,
+        password: updatedData.password,
+        cellNumber: updatedData.number
+    }, {
+        where: {
+            id: accountId
+        
+        }
+    })
+    .then(result => {
+        res.redirect(`/accounts?service=${updatedData.service}`)
+    })
+    .catch(err => {
 
-        res.send(errors)
 
-    }
-    else {
-        Accounts.update({
-            user: updatedData.nickname,
-            email: updatedData.email,
-            recoveryEmail: updatedData.recoveryEmail,
-            password: updatedData.password,
-            cellNumber: updatedData.number
-        }, {
-            where: {
-                id: accountId
-            
-            }
-        })
-        .then(result => {
-            res.redirect(`/accounts?service=${updatedData.service}`)
-        })
-        .catch(err => {
+        console.log(err)
+    })
+
+
     
-    
-            console.log(err)
-        })
-
-
-    }
 
 }
 

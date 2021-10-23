@@ -12,6 +12,8 @@ router.get('/delete-account', accountsController.deleteAccount)
 
 router.post('/new-account', validate.validateRules, accountsController.dataValidation)
 router.post('/new-account', validate.validateRules, accountsController.postAccount)
+
+router.post('/edit-account', validate.validateRules, accountsController.dataValidation)
 router.post('/edit-account', validate.validateRules, accountsController.postEditAccount)
 
 module.exports = router
