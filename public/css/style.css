@@ -1,10 +1,8 @@
 :root {
-
     --main-bg-color: #02020A;
     --my-red: #9E0D0D; 
     --table-bg-color: #A7ADC6;
     --table-border-color: #29339B;
-
 }
 
 * {
@@ -23,8 +21,9 @@ nav {
     display: block;
 }
 
-.responsive-nav{
-    display: none;
+.nav {
+    margin-top: 8px;
+    gap: 24px;
 }
 
 ul {
@@ -37,8 +36,9 @@ li {
     cursor: pointer;
 }
 
-.nav-link-mobile {
-    color: white;
+li:hover {
+    transform: scale(1.2);
+    color: var(--my-red);
 }
 
 main {
@@ -51,26 +51,30 @@ main {
 
 @media screen and (max-width: 700px) {
 
-    .responsive-nav{
+    .nav{
         display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        font-size: 0.8em;
+        gap: 5px;
+        border: none;
+        margin-bottom: 8px;
     }
 
-    .nav{
-        display: none;
+    li {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
     
     header {
-        /* background-color: red; */
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        /* justify-content: flex-end; */
-        padding: 0;
+        margin-bottom: 24px;
     }
     .nav-link-mobile {
         text-decoration: none;
         color: white;
         padding: 8px;
-        /* border-bottom: 0.5px solid white; */
     }
 }
